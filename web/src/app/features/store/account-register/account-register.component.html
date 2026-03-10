@@ -1,0 +1,30 @@
+<mat-card class="account-card">
+  <h1>Create Account</h1>
+  <p class="muted">Save your details for quicker future orders.</p>
+
+  <mat-form-field>
+    <mat-label>Full Name</mat-label>
+    <input matInput [(ngModel)]="fullName" autocomplete="name" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput [(ngModel)]="email" type="email" autocomplete="email" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Phone</mat-label>
+    <input matInput [(ngModel)]="phone" autocomplete="tel" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input matInput [(ngModel)]="password" type="password" autocomplete="new-password" />
+  </mat-form-field>
+
+  <p *ngIf="error" class="error">{{ error }}</p>
+
+  <button mat-raised-button color="primary" (click)="submit()">Create Account</button>
+
+  <p class="muted">Already registered? <a routerLink="/account/login">Sign in</a></p>
+</mat-card>

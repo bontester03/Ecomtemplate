@@ -1,0 +1,35 @@
+﻿<section class="cart-page py-5">
+  <div class="container">
+    <article class="placeholder-box">
+      <h1 class="page-title">Your Cart</h1>
+
+      <ng-container *ngIf="cart.items.length; else empty">
+        <div *ngFor="let line of cart.items; let i = index" class="line-card">
+          <div class="line-left">
+            <strong>{{ line.productName }}</strong>
+            <p>{{ line.variantName }} &middot; Qty {{ line.quantity }}</p>
+            <p *ngIf="line.addOns.length">Add-ons: {{ addOnNames(line) }}</p>
+            <small *ngIf="line.messageCard">Card: {{ line.messageCard }}</small>
+          </div>
+
+          <div class="line-right">
+            <p class="line-total">AED {{ lineTotal(line) }}</p>
+            <button class="btn btn-outline-secondary btn-sm" type="button" (click)="remove(i)">Remove</button>
+          </div>
+        </div>
+
+        <div class="summary-box">
+          <h3>Subtotal: AED {{ cart.subtotal() }}</h3>
+          <a class="btn btn-khf" routerLink="/checkout">Proceed to checkout</a>
+        </div>
+      </ng-container>
+
+      <ng-template #empty>
+        <div class="empty-state">
+          <p>Your cart is empty.</p>
+          <a class="btn btn-outline-secondary" routerLink="/home">Continue shopping</a>
+        </div>
+      </ng-template>
+    </article>
+  </div>
+</section>

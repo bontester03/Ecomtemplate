@@ -1,0 +1,37 @@
+.benefits-strip {
+  background-color: #4b1f63;
+  color: #fff;
+  padding: 0.65rem 0;
+}
+
+.benefit-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem 0.9rem;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.78rem;
+  }
+
+  i {
+    font-size: 0.95rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .benefit-list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1200px) {
+  .benefit-list {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+  }
+}

@@ -1,0 +1,69 @@
+<header class="khf-header py-3" aria-label="Main header">
+  <div class="container">
+    <div class="row gy-3 align-items-center">
+      <div class="col-12 col-lg-3 d-flex align-items-center justify-content-center justify-content-lg-start gap-3 header-left">
+        <label class="visually-hidden" for="currencySelect">Currency</label>
+        <select id="currencySelect" class="form-select form-select-sm currency-select" [(ngModel)]="currency" aria-label="Select currency">
+          <option value="AED">AED</option>
+          <option value="USD">USD</option>
+        </select>
+        <a href="tel:+971500000000" class="phone-link" aria-label="Call flower shop">+971 50 000 0000</a>
+      </div>
+
+      <div class="col-12 col-lg-3 text-center text-lg-start order-lg-2">
+        <a routerLink="/home" class="logo-wrap" aria-label="Khan Home Floral Line">
+          <img src="assets/images/hero-floral.svg" alt="Khan Home Floral Line logo" class="logo-image" />
+          <span class="logo-text">Khan Home Floral Line</span>
+        </a>
+      </div>
+
+      <div class="col-12 col-lg-6 order-lg-3">
+        <div class="d-flex align-items-center justify-content-center justify-content-lg-end gap-2 header-actions">
+          <div class="search-wrap" role="search" aria-label="Search flowers">
+            <label for="searchInput" class="visually-hidden">Search flowers</label>
+            <input id="searchInput" type="text" class="form-control" placeholder="Search flowers" [(ngModel)]="search" />
+            <button class="btn search-btn" type="button" aria-label="Search">
+              <i class="bi bi-search"></i>
+            </button>
+          </div>
+
+          <app-icon-badge icon="bi-headset" label="Support"></app-icon-badge>
+
+          <ng-container *ngIf="auth.isLoggedIn; else guestAccount">
+            <a routerLink="/account" aria-label="My account" title="My Account">
+              <app-icon-badge icon="bi-person-circle" label="Account"></app-icon-badge>
+            </a>
+            <a routerLink="/my-orders" aria-label="My orders" title="My Orders">
+              <app-icon-badge icon="bi-receipt" label="My Orders"></app-icon-badge>
+            </a>
+            <a routerLink="/tracking" aria-label="Track order" title="Track Order">
+              <app-icon-badge icon="bi-truck" label="Track Order"></app-icon-badge>
+            </a>
+            <a routerLink="/checkout" aria-label="Checkout" title="Checkout">
+              <app-icon-badge icon="bi-credit-card" label="Checkout"></app-icon-badge>
+            </a>
+            <a *ngIf="auth.isAdminOrStaff" routerLink="/admin" aria-label="Admin panel" title="Admin Panel">
+              <app-icon-badge icon="bi-speedometer2" label="Admin Panel"></app-icon-badge>
+            </a>
+            <button class="icon-action-btn" type="button" aria-label="Logout" title="Logout" (click)="logout()">
+              <i class="bi bi-box-arrow-right"></i>
+            </button>
+          </ng-container>
+
+          <ng-template #guestAccount>
+            <a routerLink="/tracking" aria-label="Track order">
+              <app-icon-badge icon="bi-truck" label="Track Order"></app-icon-badge>
+            </a>
+            <a routerLink="/account/login" aria-label="User login">
+              <app-icon-badge icon="bi-person" label="Login"></app-icon-badge>
+            </a>
+          </ng-template>
+
+          <a routerLink="/cart" aria-label="Shopping cart">
+            <app-icon-badge icon="bi-bag" label="Cart" [badge]="cartCount"></app-icon-badge>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

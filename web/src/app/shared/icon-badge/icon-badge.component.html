@@ -1,0 +1,4 @@
+<button type="button" class="icon-badge" [attr.aria-label]="label">
+  <i class="bi" [class]="'bi ' + icon"></i>
+  <span *ngIf="badge !== null" class="badge-pill" aria-live="polite">{{ badge }}</span>
+</button>

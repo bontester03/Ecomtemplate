@@ -1,0 +1,9 @@
+﻿.hero {
+  border-radius: 1rem;
+  background: linear-gradient(125deg, #f8f4e5, #d9efe4);
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+.grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+.products { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+

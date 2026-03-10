@@ -1,0 +1,56 @@
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.auth-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(160deg, #f4f6fb 0%, #eceff7 55%, #e8edf8 100%);
+}
+
+.auth-content {
+  flex: 1 0 auto;
+}
+
+.card {
+  border-radius: 0.9rem !important;
+}
+
+.card-header {
+  background: #ffffff;
+}
+
+.card-header h3 {
+  color: #1f2a44;
+}
+
+.form-control {
+  border-color: #cfd7e6;
+}
+
+.form-control:focus {
+  border-color: #879cca;
+  box-shadow: 0 0 0 0.2rem rgba(88, 111, 168, 0.18);
+}
+
+.btn-primary {
+  background-color: #2f4b8f;
+  border-color: #2f4b8f;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #263f78;
+  border-color: #263f78;
+}
+
+.footer-admin {
+  background: transparent;
+  color: #5d677f;
+}
+
+.footer-admin a {
+  color: #495b8f;
+}

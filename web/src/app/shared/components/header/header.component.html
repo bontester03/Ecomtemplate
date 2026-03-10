@@ -1,0 +1,17 @@
+<mat-toolbar color="primary" class="topbar">
+  <a mat-button routerLink="/" class="brand">Khan Home Floral Line</a>
+  <span class="spacer"></span>
+  <a mat-button routerLink="/catalog">Shop</a>
+  <a mat-button routerLink="/cart">Cart</a>
+  <a mat-button routerLink="/tracking">Track</a>
+
+  <a *ngIf="auth.isLoggedIn" mat-button routerLink="/my-orders">My Orders</a>
+  <a *ngIf="!auth.isLoggedIn" mat-button routerLink="/account/login">Sign In</a>
+  <a *ngIf="!auth.isLoggedIn" mat-button routerLink="/account/register">Register</a>
+
+  <a *ngIf="auth.isAdminOrStaff" mat-button routerLink="/admin">Admin</a>
+  <button *ngIf="auth.isLoggedIn" mat-button (click)="logout()">Logout</button>
+
+  <a mat-button [href]="whatsappLink" target="_blank" rel="noopener">WhatsApp</a>
+  <a mat-button [href]="instagramLink" target="_blank" rel="noopener">Instagram</a>
+</mat-toolbar>

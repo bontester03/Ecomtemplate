@@ -1,0 +1,113 @@
+<section class="account-page py-5">
+  <div class="container">
+    <article class="placeholder-box">
+      <h1 class="page-title">My Account</h1>
+
+      <p *ngIf="loading">Loading account details...</p>
+      <p *ngIf="error" class="error">{{ error }}</p>
+      <p *ngIf="success" class="success">{{ success }}</p>
+
+      <div *ngIf="profile" class="content-grid">
+        <mat-card class="section-card">
+          <h2>Profile</h2>
+          <p class="muted mb-3">Email: <strong>{{ profile.email }}</strong></p>
+
+          <form class="form-grid" (ngSubmit)="saveProfile()">
+            <mat-form-field>
+              <mat-label>Full Name</mat-label>
+              <input matInput [(ngModel)]="profileForm.fullName" name="fullName" required />
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Phone</mat-label>
+              <input matInput [(ngModel)]="profileForm.phone" name="phone" required />
+            </mat-form-field>
+
+            <div class="actions-row">
+              <button mat-raised-button color="primary" type="submit" [disabled]="savingProfile">
+                {{ savingProfile ? 'Saving...' : 'Update Profile' }}
+              </button>
+            </div>
+          </form>
+        </mat-card>
+
+        <mat-card class="section-card">
+          <h2>{{ editingAddressId ? 'Edit Address' : 'Add New Address' }}</h2>
+          <form class="form-grid" (ngSubmit)="saveAddress()">
+            <mat-form-field>
+              <mat-label>Label</mat-label>
+              <input matInput [(ngModel)]="addressForm.label" name="label" placeholder="Home, Office" required />
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Recipient Name</mat-label>
+              <input matInput [(ngModel)]="addressForm.recipientName" name="recipientName" required />
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Phone</mat-label>
+              <input matInput [(ngModel)]="addressForm.phone" name="addressPhone" required />
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Area</mat-label>
+              <input matInput [(ngModel)]="addressForm.area" name="area" required />
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Emirate</mat-label>
+              <select matNativeControl [(ngModel)]="addressForm.emirate" name="emirate" required>
+                <option *ngFor="let emirate of emirates" [value]="emirate">{{ emirate }}</option>
+              </select>
+            </mat-form-field>
+
+            <mat-form-field class="full-row">
+              <mat-label>Address Line</mat-label>
+              <input matInput [(ngModel)]="addressForm.addressLine" name="addressLine" required />
+            </mat-form-field>
+
+            <mat-form-field class="full-row">
+              <mat-label>Landmark (optional)</mat-label>
+              <input matInput [(ngModel)]="addressForm.landmark" name="landmark" />
+            </mat-form-field>
+
+            <label class="default-check full-row" aria-label="Set as default address">
+              <input type="checkbox" [(ngModel)]="addressForm.isDefault" name="isDefault" />
+              <span>Set as default address</span>
+            </label>
+
+            <div class="actions-row full-row">
+              <button mat-raised-button color="primary" type="submit" [disabled]="savingAddress">
+                {{ savingAddress ? 'Saving...' : (editingAddressId ? 'Update Address' : 'Save Address') }}
+              </button>
+              <button *ngIf="editingAddressId" mat-stroked-button type="button" (click)="resetAddressForm()">Cancel</button>
+            </div>
+          </form>
+        </mat-card>
+      </div>
+
+      <mat-card *ngIf="profile" class="section-card mt-3">
+        <h2>Saved Addresses</h2>
+
+        <p *ngIf="!profile.addresses.length" class="muted mb-0">No addresses yet. Add your first address above.</p>
+
+        <div *ngFor="let address of profile.addresses" class="address-row">
+          <div>
+            <p class="address-title">
+              <strong>{{ address.label }}</strong>
+              <span *ngIf="address.isDefault" class="default-pill">Default</span>
+            </p>
+            <p class="address-line">{{ address.recipientName }} &middot; {{ address.phone }}</p>
+            <p class="address-line">{{ address.addressLine }}, {{ address.area }}, {{ address.emirate }}</p>
+            <p *ngIf="address.landmark" class="address-line">Landmark: {{ address.landmark }}</p>
+          </div>
+
+          <div class="address-actions">
+            <button mat-stroked-button type="button" (click)="editAddress(address)">Edit</button>
+            <button mat-stroked-button color="warn" type="button" (click)="deleteAddress(address.id)">Delete</button>
+          </div>
+        </div>
+      </mat-card>
+    </article>
+  </div>
+</section>

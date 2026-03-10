@@ -1,0 +1,6 @@
+@KhanHomeFloralLine.Api_HostAddress = http://localhost:5174
+
+GET {{KhanHomeFloralLine.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

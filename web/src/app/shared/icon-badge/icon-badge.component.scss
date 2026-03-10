@@ -1,0 +1,32 @@
+.icon-badge {
+  border: 0;
+  background: transparent;
+  color: #4b1f63;
+  position: relative;
+  width: 2.3rem;
+  height: 2.3rem;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+
+  i {
+    font-size: 1.15rem;
+  }
+
+  &:hover {
+    background-color: #f0e8f4;
+  }
+}
+
+.badge-pill {
+  position: absolute;
+  top: 0.05rem;
+  right: 0.05rem;
+  min-width: 1rem;
+  height: 1rem;
+  padding: 0 0.25rem;
+  border-radius: 999px;
+  background-color: #4b1f63;
+  color: #fff;
+  font-size: 0.65rem;
+  line-height: 1rem;
+}

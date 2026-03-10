@@ -1,0 +1,12 @@
+<nav class="main-nav" aria-label="Flower categories navigation">
+  <div class="container">
+    <ul class="nav justify-content-center gap-2 gap-lg-3 py-2 flex-nowrap overflow-auto">
+      <li class="nav-item" *ngFor="let item of staticLinks">
+        <a class="nav-link px-2" [routerLink]="['/category', item.slug]">{{ item.label }}</a>
+      </li>
+      <li class="nav-item" *ngFor="let item of dynamicLinks">
+        <a class="nav-link px-2" [routerLink]="['/category', item.slug]">{{ item.label }}</a>
+      </li>
+    </ul>
+  </div>
+</nav>

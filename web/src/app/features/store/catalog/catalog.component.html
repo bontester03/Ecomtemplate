@@ -1,0 +1,24 @@
+﻿<div class="filters">
+  <mat-form-field appearance="outline">
+    <mat-label>Search flowers</mat-label>
+    <input matInput [(ngModel)]="search" (keyup.enter)="load()" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Category</mat-label>
+    <mat-select [(ngModel)]="categoryId" (selectionChange)="load()">
+      <mat-option value="">All</mat-option>
+      <mat-option *ngFor="let c of categories" [value]="c.id">{{ c.name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div class="products">
+  <mat-card *ngFor="let p of products">
+    <img mat-card-image [src]="p.imageUrl || 'https://via.placeholder.com/400x280'" [alt]="p.name" loading="lazy" />
+    <mat-card-title>{{ p.name }}</mat-card-title>
+    <mat-card-subtitle>{{ p.categoryName }} · From AED {{ p.startingPrice }}</mat-card-subtitle>
+    <a mat-stroked-button [routerLink]="['/product', p.slug]">Details</a>
+  </mat-card>
+</div>
+

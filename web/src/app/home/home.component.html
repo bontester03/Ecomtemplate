@@ -1,0 +1,15 @@
+<app-hero></app-hero>
+<app-reviews-strip [reviews]="reviews"></app-reviews-strip>
+
+<section class="main-content py-4">
+  <div class="container">
+    <div class="row g-3 g-lg-4">
+      <div class="col-12 col-lg-3">
+        <app-sidebar-filters></app-sidebar-filters>
+      </div>
+      <div class="col-12 col-lg-9">
+        <app-product-grid [products]="products" title="Feature Products"></app-product-grid>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,47 @@
+.trust-box,
+.review-card {
+  background-color: #fff;
+  border: 1px solid #e8d9f2;
+  border-radius: 0.9rem;
+  padding: 1rem;
+}
+
+.trust-box {
+  h2 {
+    color: #2d173b;
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+  }
+
+  p {
+    color: #5c4b68;
+    font-size: 0.84rem;
+  }
+}
+
+.trustpilot-mark {
+  color: #188750;
+  font-weight: 600;
+
+  i {
+    margin-right: 0.35rem;
+  }
+}
+
+.review-card {
+  h3 {
+    font-size: 0.96rem;
+    margin: 0.6rem 0 0.3rem;
+    color: #2f163f;
+  }
+
+  p {
+    color: #574566;
+    font-size: 0.86rem;
+    margin-bottom: 0.6rem;
+  }
+
+  small {
+    color: #7a6a87;
+  }
+}

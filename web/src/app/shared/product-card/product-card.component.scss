@@ -1,0 +1,28 @@
+.product-card {
+  border-radius: 0.75rem;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0.8rem 1.2rem rgba(40, 15, 55, 0.14) !important;
+  }
+}
+
+.product-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.product-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2f193d;
+  min-height: 2.8rem;
+}
+
+.price-text {
+  color: #6b5a75;
+  margin-bottom: 0.85rem;
+}

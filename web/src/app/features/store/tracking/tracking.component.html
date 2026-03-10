@@ -1,0 +1,50 @@
+﻿<section class="tracking-page py-5">
+  <div class="container">
+    <article class="placeholder-box">
+      <h1 class="page-title">Track Order</h1>
+
+      <mat-card class="track-form-card">
+        <div class="grid">
+          <mat-form-field>
+            <mat-label>Order Number</mat-label>
+            <input matInput [(ngModel)]="orderNumber" />
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Email or Phone (required for guest)</mat-label>
+            <input matInput [(ngModel)]="contact" />
+          </mat-form-field>
+
+          <button mat-raised-button color="primary" (click)="track()">Track</button>
+        </div>
+      </mat-card>
+
+      <div *ngIf="myOrders.length > 0" class="my-orders">
+        <h3>Your Recent Orders</h3>
+        <mat-card *ngFor="let order of myOrders" class="line-card">
+          <div>
+            <strong>{{ order.orderNumber }}</strong>
+            <p>{{ order.createdAtUtc | date: 'medium' }}</p>
+          </div>
+          <button mat-stroked-button color="primary" (click)="trackOrderFromList(order)">Track</button>
+        </mat-card>
+      </div>
+
+      <p *ngIf="loading">Fetching tracking details...</p>
+      <p *ngIf="error" class="error">{{ error }}</p>
+
+      <mat-card *ngIf="result" class="result-card">
+        <h2>{{ result.orderNumber }} &middot; {{ result.status }}</h2>
+        <p><strong>Delivery:</strong> {{ result.deliveryDate }} {{ result.deliveryTimeSlot }}</p>
+
+        <h3>Status Timeline</h3>
+        <mat-card *ngFor="let entry of result.timeline" class="line-card">
+          <div>
+            <strong>{{ entry.status }}</strong>
+            <p>{{ entry.createdAtUtc | date:'medium' }}</p>
+          </div>
+        </mat-card>
+      </mat-card>
+    </article>
+  </div>
+</section>

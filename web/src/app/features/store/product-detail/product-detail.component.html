@@ -1,0 +1,32 @@
+﻿<div *ngIf="product as p" class="detail">
+  <img [src]="p.imageUrls[0] || 'https://via.placeholder.com/600x450'" [alt]="p.name" loading="lazy" />
+  <div>
+    <h1>{{ p.name }}</h1>
+    <p>{{ p.description }}</p>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Variant</mat-label>
+      <mat-select [(ngModel)]="selectedVariantId">
+        <mat-option *ngFor="let v of p.variants" [value]="v.id">{{ v.name }} · AED {{ v.price }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Quantity</mat-label>
+      <input matInput type="number" min="1" [(ngModel)]="quantity" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Message card (max 250 chars)</mat-label>
+      <textarea matInput maxlength="250" [(ngModel)]="messageCard"></textarea>
+    </mat-form-field>
+
+    <h3>Add-ons</h3>
+    <mat-checkbox *ngFor="let a of p.addOns" (change)="toggleAddOn(a.id, $event.checked)">{{ a.name }} (+AED {{ a.price }})</mat-checkbox>
+
+    <div class="cta">
+      <button mat-raised-button color="primary" (click)="addToCart()">Add to cart</button>
+    </div>
+  </div>
+</div>
+

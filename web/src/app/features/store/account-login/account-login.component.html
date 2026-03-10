@@ -1,0 +1,20 @@
+<mat-card class="account-card">
+  <h1>Sign In</h1>
+  <p class="muted">Access your order history and faster checkout.</p>
+
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput [(ngModel)]="email" type="email" autocomplete="email" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input matInput [(ngModel)]="password" type="password" autocomplete="current-password" />
+  </mat-form-field>
+
+  <p *ngIf="error" class="error">{{ error }}</p>
+
+  <button mat-raised-button color="primary" (click)="submit()">Sign In</button>
+
+  <p class="muted">New customer? <a routerLink="/account/register">Create an account</a></p>
+</mat-card>

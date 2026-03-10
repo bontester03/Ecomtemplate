@@ -1,0 +1,43 @@
+.sidebar-filters {
+  background-color: #fff;
+  border: 1px solid #eadcf4;
+  border-radius: 0.85rem;
+  padding: 1rem;
+}
+
+.sidebar-title {
+  color: #2f183e;
+  font-size: 1.05rem;
+  margin-bottom: 0.8rem;
+}
+
+.quick-links {
+  display: grid;
+  gap: 0.35rem;
+
+  a {
+    color: #4b1f63;
+    font-weight: 500;
+    font-size: 0.88rem;
+  }
+}
+
+.accordion-item {
+  border-color: #efe3f7;
+}
+
+.accordion-button {
+  color: #392145;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.accordion-body {
+  display: grid;
+  gap: 0.35rem;
+
+  a {
+    color: #5d4a68;
+    font-size: 0.86rem;
+  }
+}

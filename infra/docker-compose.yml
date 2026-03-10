@@ -1,0 +1,39 @@
+﻿services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: khan_floral_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: ..
+      dockerfile: api/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__DefaultConnection: Host=postgres;Port=5432;Database=khan_floral_db;Username=postgres;Password=postgres
+      Jwt__Key: DEV_ONLY_SUPER_SECRET_2026_KHAN_HOME_FLORAL
+      Jwt__Issuer: KhanHomeFloralLine
+      Jwt__Audience: KhanHomeFloralLine.Client
+    ports:
+      - "5001:8080"
+    depends_on:
+      - postgres
+
+  web:
+    build:
+      context: ..
+      dockerfile: web/Dockerfile
+    ports:
+      - "4200:80"
+    depends_on:
+      - api
+
+volumes:
+  postgres_data:
+

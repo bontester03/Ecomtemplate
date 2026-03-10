@@ -1,0 +1,51 @@
+:host {
+  display: block;
+  background-color: #fbf7fd;
+}
+
+.detail-image {
+  width: 100%;
+  height: 100%;
+  min-height: 20rem;
+  object-fit: cover;
+}
+
+h1 {
+  color: #2f173d;
+}
+
+.meta-section {
+  margin-top: 1rem;
+
+  h3 {
+    font-size: 1.05rem;
+    color: #2f173d;
+    margin-bottom: 0.35rem;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    color: #5f4b6c;
+  }
+}
+
+.variant-option,
+.addon-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid #eadcf4;
+  border-radius: 0.5rem;
+  background: #fff;
+}
+
+.qty-input {
+  max-width: 8rem;
+}
+
+.success-msg {
+  color: #1f7a3e;
+  font-weight: 600;
+}

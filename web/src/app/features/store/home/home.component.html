@@ -1,0 +1,32 @@
+﻿<section class="hero">
+  <h1>Fresh flowers delivered across UAE</h1>
+  <p>Elegant bouquets, same-day delivery windows, and personalized message cards.</p>
+  <a mat-raised-button color="primary" routerLink="/catalog">Shop Flowers</a>
+</section>
+
+<section>
+  <h2>Featured Categories</h2>
+  <div class="grid">
+    <mat-card *ngFor="let category of categories">
+      <mat-card-title>{{ category.name }}</mat-card-title>
+      <mat-card-actions>
+        <a mat-button [routerLink]="['/catalog']" [queryParams]="{ categoryId: category.id }">Browse</a>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</section>
+
+<section>
+  <h2>Top Picks</h2>
+  <div class="grid products">
+    <mat-card *ngFor="let product of featured">
+      <img mat-card-image [src]="product.imageUrl || 'https://via.placeholder.com/400x280'" [alt]="product.name" loading="lazy" />
+      <mat-card-title>{{ product.name }}</mat-card-title>
+      <mat-card-subtitle>AED {{ product.startingPrice }}</mat-card-subtitle>
+      <mat-card-actions>
+        <a mat-flat-button color="accent" [routerLink]="['/product', product.slug]">View</a>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</section>
+

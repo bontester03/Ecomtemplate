@@ -1,0 +1,45 @@
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+:root {
+  --khf-purple: #4b1f63;
+  --khf-purple-dark: #2f123f;
+  --khf-lilac-bg: #fbf7fd;
+  --khf-border: #eadcf4;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--khf-lilac-bg);
+  color: #261733;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+}
+
+.btn-khf {
+  background-color: var(--khf-purple);
+  border-color: var(--khf-purple);
+  color: #fff;
+  font-weight: 600;
+
+  &:hover,
+  &:focus {
+    background-color: var(--khf-purple-dark);
+    border-color: var(--khf-purple-dark);
+    color: #fff;
+  }
+}
+
+.container {
+  max-width: 1240px;
+}

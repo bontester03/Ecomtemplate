@@ -1,0 +1,11 @@
+﻿/.dotnet/
+**/bin/
+**/obj/
+web/node_modules/
+web/dist/
+api/**/appsettings.Local.json
+uploads/
+
+.npm-cache/
+build.log
+tmp_index.html

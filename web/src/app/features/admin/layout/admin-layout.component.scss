@@ -1,0 +1,46 @@
+:host {
+  display: block;
+}
+
+.topnav {
+  z-index: 1040;
+}
+
+.avatar {
+  width: 2rem;
+  height: 2rem;
+  object-fit: cover;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.sidenav .nav-link {
+  cursor: pointer;
+}
+
+.sidenav-menu-nested .nav-link {
+  font-size: 0.95rem;
+}
+
+.dropdown-arrow {
+  font-size: 0.75rem;
+  margin-left: 0.3rem;
+}
+
+#layoutSidenav_content {
+  min-height: calc(100vh - 56px);
+}
+
+.dropdown-item {
+  cursor: pointer;
+}
+
+@media (max-width: 991.98px) {
+  .container-fluid.px-4 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}

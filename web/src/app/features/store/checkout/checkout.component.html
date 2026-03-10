@@ -1,0 +1,96 @@
+<section class="checkout-page py-5">
+  <div class="container">
+    <article class="placeholder-box">
+      <h1 class="page-title">Checkout</h1>
+
+      <form class="grid" (ngSubmit)="placeOrder()">
+        <mat-form-field *ngIf="isLoggedIn" class="full">
+          <mat-label>Choose Address</mat-label>
+          <mat-select [(ngModel)]="selectedAddressId" name="selectedAddressId" (selectionChange)="onAddressSelectionChange()">
+            <mat-option [value]="newAddressKey">Use a new delivery address</mat-option>
+            <mat-option *ngFor="let address of addresses" [value]="address.id">
+              {{ address.label }} - {{ address.area }}, {{ address.emirate }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input matInput [(ngModel)]="form.customerName" name="customerName" required />
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input matInput [(ngModel)]="form.email" name="email" required />
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Phone</mat-label>
+          <input matInput [(ngModel)]="form.phone" name="phone" required />
+        </mat-form-field>
+
+        <mat-form-field class="full">
+          <mat-label>Delivery Address</mat-label>
+          <input matInput [(ngModel)]="form.deliveryAddress" name="deliveryAddress" required />
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Area</mat-label>
+          <input matInput [(ngModel)]="form.deliveryArea" name="deliveryArea" (blur)="onAreaChange()" required />
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Delivery Zone</mat-label>
+          <mat-select [(ngModel)]="form.deliveryZoneId" name="deliveryZoneId" (selectionChange)="onZoneChange()" required>
+            <mat-option *ngFor="let z of zones" [value]="z.id">{{ z.emirate }} - {{ z.area }} (AED {{ z.charge }})</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Time Slot</mat-label>
+          <mat-select [(ngModel)]="form.deliveryTimeSlotId" name="deliveryTimeSlotId" required>
+            <mat-option *ngFor="let s of slots" [value]="s.id">
+              {{ s.label }}<span *ngIf="s.capacityLimit"> ({{ s.booked || 0 }}/{{ s.capacityLimit }})</span>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Delivery Date</mat-label>
+          <input matInput type="date" [(ngModel)]="form.deliveryDate" name="deliveryDate" (change)="onDeliveryDateChange()" required />
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Promo code</mat-label>
+          <input matInput [(ngModel)]="form.promoCode" name="promoCode" />
+        </mat-form-field>
+
+        <div *ngIf="isLoggedIn && !usingSavedAddress" class="full save-address-wrap">
+          <label class="save-address-check" aria-label="Save this address to my account">
+            <input type="checkbox" [(ngModel)]="saveAddress" name="saveAddress" />
+            <span>Save this as a new address in my account</span>
+          </label>
+
+          <mat-form-field *ngIf="saveAddress" class="save-address-label">
+            <mat-label>Address label</mat-label>
+            <input matInput [(ngModel)]="addressLabel" name="addressLabel" placeholder="Home, Office, Gift Address" />
+          </mat-form-field>
+        </div>
+
+        <div class="full">
+          <mat-radio-group [(ngModel)]="form.paymentMethod" name="paymentMethod">
+            <mat-radio-button value="1" disabled>Online (coming soon)</mat-radio-button>
+            <mat-radio-button value="2">Cash on Delivery</mat-radio-button>
+          </mat-radio-group>
+        </div>
+
+        <div class="full actions">
+          <h3>Total (before server validation): AED {{ cart.subtotal() }}</h3>
+          <button mat-raised-button color="primary" type="submit">Place order</button>
+        </div>
+
+        <p *ngIf="error" class="full error">{{ error }}</p>
+      </form>
+    </article>
+  </div>
+</section>

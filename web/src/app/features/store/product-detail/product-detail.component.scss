@@ -1,0 +1,5 @@
+﻿.detail { display: grid; gap: 1rem; grid-template-columns: 1fr; }
+.detail img { width: 100%; border-radius: 12px; }
+.cta { margin-top: 1rem; }
+@media (min-width: 900px) { .detail { grid-template-columns: 1fr 1fr; } }
+

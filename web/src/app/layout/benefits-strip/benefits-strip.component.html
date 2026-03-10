@@ -1,0 +1,10 @@
+<section class="benefits-strip" aria-label="Store trust benefits">
+  <div class="container">
+    <ul class="benefit-list">
+      <li *ngFor="let item of benefits">
+        <i class="bi" [class]="'bi ' + item.icon" aria-hidden="true"></i>
+        <span>{{ item.text }}</span>
+      </li>
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,127 @@
+<nav class="topnav navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-white" id="sidenavAccordion">
+  <button
+    class="btn btn-icon btn-transparent-dark order-1 order-lg-0 me-2 ms-lg-2 me-lg-0"
+    type="button"
+    aria-label="Toggle admin sidebar"
+    (click)="toggleSidebar()"
+  >
+    <i class="bi bi-list fs-5"></i>
+  </button>
+
+  <a class="navbar-brand pe-3 ps-4 ps-lg-2" routerLink="/admin">KHF Admin</a>
+
+  <form class="form-inline me-auto d-none d-lg-block me-3">
+    <div class="input-group input-group-joined input-group-solid">
+      <input class="form-control pe-0" type="search" placeholder="Search" aria-label="Search" />
+      <div class="input-group-text"><i class="bi bi-search"></i></div>
+    </div>
+  </form>
+
+  <ul class="navbar-nav align-items-center ms-auto">
+    <li class="nav-item me-2">
+      <button class="btn btn-icon btn-transparent-dark" type="button" aria-label="Notifications">
+        <i class="bi bi-bell"></i>
+      </button>
+    </li>
+    <li class="nav-item me-2 d-none d-sm-block">
+      <button class="btn btn-icon btn-transparent-dark" type="button" aria-label="Messages">
+        <i class="bi bi-envelope"></i>
+      </button>
+    </li>
+    <li class="nav-item dropdown no-caret dropdown-user me-3 me-lg-4">
+      <button
+        class="btn btn-icon btn-transparent-dark dropdown-toggle"
+        id="adminUserMenu"
+        type="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+        aria-label="User menu"
+      >
+        <img class="img-fluid rounded-circle avatar" [src]="avatarPath" alt="Admin profile" />
+      </button>
+      <div class="dropdown-menu dropdown-menu-end border-0 shadow animated--fade-in-up" aria-labelledby="adminUserMenu">
+        <h6 class="dropdown-header d-flex align-items-center">
+          <img class="dropdown-user-img" [src]="avatarPath" alt="Admin profile" />
+          <div class="dropdown-user-details">
+            <div class="dropdown-user-details-name">{{ auth.fullName || 'Valerie Luna' }}</div>
+            <div class="dropdown-user-details-email">admin&#64;khanhomefloral.ae</div>
+          </div>
+        </h6>
+        <div class="dropdown-divider"></div>
+        <button class="dropdown-item" type="button" (click)="logout()">
+          <div class="dropdown-item-icon"><i class="bi bi-box-arrow-right"></i></div>
+          Logout
+        </button>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+<div id="layoutSidenav">
+  <div id="layoutSidenav_nav">
+    <nav class="sidenav shadow-right sidenav-light">
+      <div class="sidenav-menu">
+        <div class="nav accordion" id="accordionSidenav">
+          <div class="sidenav-menu-heading">Core</div>
+
+          <a class="nav-link" href="javascript:void(0)">
+            <div class="nav-link-icon"><i class="bi bi-activity"></i></div>
+            Dashboards
+            <div class="sidenav-collapse-arrow"><i class="bi bi-chevron-down"></i></div>
+          </a>
+          <nav class="sidenav-menu-nested nav">
+            <a class="nav-link" routerLink="/admin" [class.active]="isActive('/admin', true)">
+              Default
+              <span class="badge bg-primary-soft text-primary ms-auto">Updated</span>
+            </a>
+            <a class="nav-link" routerLink="/admin/orders" [class.active]="isActive('/admin/orders')">Orders</a>
+            <a class="nav-link" routerLink="/admin/products" [class.active]="isActive('/admin/products')">Products</a>
+          </nav>
+
+          <div class="sidenav-menu-heading">Custom</div>
+          <a class="nav-link" routerLink="/admin/promos" [class.active]="isActive('/admin/promos')">
+            <div class="nav-link-icon"><i class="bi bi-ticket-perforated"></i></div>
+            Promo Codes
+          </a>
+          <a class="nav-link" routerLink="/admin/users" [class.active]="isActive('/admin/users')">
+            <div class="nav-link-icon"><i class="bi bi-people"></i></div>
+            Users
+          </a>
+          <a class="nav-link" routerLink="/admin/delivery" [class.active]="isActive('/admin/delivery')">
+            <div class="nav-link-icon"><i class="bi bi-truck"></i></div>
+            Delivery Rules
+          </a>
+
+        </div>
+      </div>
+
+      <div class="sidenav-footer">
+        <div class="sidenav-footer-content">
+          <div class="sidenav-footer-subtitle">Logged in as:</div>
+          <div class="sidenav-footer-title">{{ auth.fullName || 'Valerie Luna' }}</div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <div id="layoutSidenav_content" (click)="onMainAreaClick()">
+    <main>
+      <div class="container-xl px-4 mt-4">
+        <router-outlet />
+      </div>
+    </main>
+
+    <footer class="footer-admin mt-auto footer-light">
+      <div class="container-xl px-4">
+        <div class="row">
+          <div class="col-md-6 small">Copyright &copy; Khan Home Floral Line {{ currentYear }}</div>
+          <div class="col-md-6 text-md-end small">
+            <a href="javascript:void(0)">Privacy Policy</a>
+            &middot;
+            <a href="javascript:void(0)">Terms &amp; Conditions</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>

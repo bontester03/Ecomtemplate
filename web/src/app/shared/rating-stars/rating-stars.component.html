@@ -1,0 +1,3 @@
+<span class="stars" [class]="'stars ' + sizeClass" aria-label="Rating stars">
+  <i *ngFor="let star of stars" class="bi" [ngClass]="star <= rating ? 'bi-star-fill' : 'bi-star'"></i>
+</span>

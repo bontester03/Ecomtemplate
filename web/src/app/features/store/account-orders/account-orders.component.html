@@ -1,0 +1,57 @@
+﻿<section class="orders-page py-5">
+  <div class="container">
+    <article class="placeholder-box">
+      <h1 class="page-title">My Orders</h1>
+
+      <div *ngIf="orders.length === 0" class="empty-state">
+        <p>No orders yet.</p>
+      </div>
+
+      <div *ngIf="orders.length > 0" class="orders-list">
+        <mat-card *ngFor="let order of orders" class="order-card">
+          <div class="order-main">
+            <div class="order-meta">
+              <strong>{{ order.orderNumber }}</strong>
+              <p>{{ order.createdAtUtc | date: 'medium' }}</p>
+            </div>
+
+            <mat-chip class="status-chip">{{ order.status }}</mat-chip>
+
+            <div class="order-total">AED {{ order.totalAmount }}</div>
+
+            <button mat-stroked-button color="primary" (click)="view(order.id)">View</button>
+          </div>
+        </mat-card>
+      </div>
+
+      <mat-card *ngIf="selected" class="detail-card">
+        <h2>Order {{ selected.orderNumber }}</h2>
+
+        <div class="detail-grid">
+          <p><strong>Status:</strong> {{ selected.status }}</p>
+          <p><strong>Total:</strong> AED {{ selected.totalAmount }}</p>
+          <p><strong>Delivery:</strong> {{ selected.deliveryDate }} ({{ selected.deliveryTimeSlot }})</p>
+          <p><strong>Address:</strong> {{ selected.deliveryAddress }}, {{ selected.deliveryArea }}</p>
+        </div>
+
+        <h3>Items</h3>
+        <mat-card *ngFor="let item of selected.items" class="line-card">
+          <div>
+            <strong>{{ item.productName }}</strong>
+            <p>{{ item.variantName }} &middot; Qty {{ item.quantity }}</p>
+            <p *ngIf="item.addOns?.length">Add-ons: {{ item.addOns.length }}</p>
+          </div>
+          <div class="line-total">AED {{ itemLineTotal(item) }}</div>
+        </mat-card>
+
+        <h3>Status Timeline</h3>
+        <mat-card *ngFor="let entry of selected.timeline" class="line-card">
+          <div>
+            <strong>{{ entry.status }}</strong>
+            <p>{{ entry.createdAtUtc | date: 'medium' }}</p>
+          </div>
+        </mat-card>
+      </mat-card>
+    </article>
+  </div>
+</section>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 360" role="img" aria-label="White lily bouquet product image">
+  <rect width="500" height="360" fill="#f2f6ff" />
+  <circle cx="170" cy="132" r="46" fill="#f9fcff" stroke="#ccd8ef" stroke-width="3" />
+  <circle cx="250" cy="106" r="42" fill="#ffffff" stroke="#d7e1f2" stroke-width="3" />
+  <circle cx="312" cy="162" r="44" fill="#f3f8ff" stroke="#cad9f0" stroke-width="3" />
+  <rect x="194" y="194" width="124" height="116" rx="12" fill="#6b3a88" />
+</svg>

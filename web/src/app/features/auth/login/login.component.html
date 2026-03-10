@@ -1,0 +1,73 @@
+<div id="layoutAuthentication" class="auth-shell">
+  <div id="layoutAuthentication_content" class="auth-content">
+    <main>
+      <div class="container-xl px-4">
+        <div class="row justify-content-center">
+          <div class="col-lg-5 col-md-7 col-sm-10">
+            <div class="card shadow-lg border-0 rounded-lg mt-5">
+              <div class="card-header justify-content-center text-center">
+                <h3 class="fw-light my-3">KHF Admin Login</h3>
+                <p class="small text-muted mb-0">Khan Home Floral Line Admin Portal</p>
+              </div>
+              <div class="card-body">
+                <form (ngSubmit)="submit()" #loginForm="ngForm" novalidate>
+                  <div class="mb-3">
+                    <label class="small mb-1" for="inputEmailAddress">Email</label>
+                    <input
+                      class="form-control"
+                      id="inputEmailAddress"
+                      name="email"
+                      type="email"
+                      placeholder="Enter email address"
+                      [(ngModel)]="email"
+                      required
+                      autocomplete="username"
+                    />
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="small mb-1" for="inputPassword">Password</label>
+                    <input
+                      class="form-control"
+                      id="inputPassword"
+                      name="password"
+                      type="password"
+                      placeholder="Enter password"
+                      [(ngModel)]="password"
+                      required
+                      autocomplete="current-password"
+                    />
+                  </div>
+
+                  <div class="alert alert-danger py-2" *ngIf="error" role="alert">{{ error }}</div>
+
+                  <div class="d-grid mt-4 mb-0">
+                    <button class="btn btn-primary" type="submit" [disabled]="!loginForm.form.valid">Login</button>
+                  </div>
+                </form>
+              </div>
+              <div class="card-footer text-center">
+                <div class="small text-muted">Use your Admin or Staff account credentials.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="layoutAuthentication_footer">
+    <footer class="footer-admin mt-auto footer-light py-3">
+      <div class="container-xl px-4">
+        <div class="row">
+          <div class="col-md-6 small">Copyright &copy; Khan Home Floral Line {{ currentYear }}</div>
+          <div class="col-md-6 text-md-end small">
+            <a href="javascript:void(0)">Privacy Policy</a>
+            &middot;
+            <a href="javascript:void(0)">Terms &amp; Conditions</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>

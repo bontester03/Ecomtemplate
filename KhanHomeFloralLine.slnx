@@ -1,0 +1,10 @@
+﻿<Solution>
+  <Folder Name="/api/">
+    <Project Path="api/KhanHomeFloralLine.Api/KhanHomeFloralLine.Api.csproj" />
+    <Project Path="api/KhanHomeFloralLine.Application/KhanHomeFloralLine.Application.csproj" />
+    <Project Path="api/KhanHomeFloralLine.Domain/KhanHomeFloralLine.Domain.csproj" />
+    <Project Path="api/KhanHomeFloralLine.Infrastructure/KhanHomeFloralLine.Infrastructure.csproj" />
+    <Project Path="api/KhanHomeFloralLine.Tests/KhanHomeFloralLine.Tests.csproj" />
+  </Folder>
+</Solution>
+

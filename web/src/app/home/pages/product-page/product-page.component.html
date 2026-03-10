@@ -1,0 +1,63 @@
+﻿<section class="py-4">
+  <div class="container" *ngIf="product; else notFound">
+    <article class="product-detail card border-0 shadow-sm">
+      <div class="row g-0">
+        <div class="col-12 col-lg-6">
+          <img [src]="product.imageUrls[0] || 'assets/images/product-1.svg'" [alt]="product.name || 'Product image'" class="detail-image" />
+        </div>
+        <div class="col-12 col-lg-6">
+          <div class="p-4">
+            <h1>{{ product.name }}</h1>
+            <p class="lead text-muted">from AED {{ product.variants[0].price || 0 }}</p>
+            <p>{{ product.description }}</p>
+
+            <div class="meta-section" *ngIf="product.variants.length">
+              <h3>Variants</h3>
+              <div class="d-grid gap-2">
+                <label class="variant-option" *ngFor="let variant of product.variants">
+                  <input type="radio" name="variant" [value]="variant.id" [(ngModel)]="selectedVariantId" />
+                  <span>{{ variant.name }} &middot; AED {{ variant.price }}</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="meta-section">
+              <h3>Quantity</h3>
+              <input class="form-control qty-input" type="number" min="1" [(ngModel)]="quantity" />
+            </div>
+
+            <div class="meta-section">
+              <h3>Message card (max 250 chars)</h3>
+              <textarea class="form-control" rows="3" maxlength="250" [(ngModel)]="messageCard"></textarea>
+            </div>
+
+            <div class="meta-section" *ngIf="product.addOns.length">
+              <h3>Add-ons</h3>
+              <div class="d-grid gap-2">
+                <label class="addon-option" *ngFor="let addOn of product.addOns">
+                  <input
+                    type="checkbox"
+                    [checked]="isAddOnSelected(addOn.id)"
+                    (change)="toggleAddOn(addOn.id, $any($event.target).checked)"
+                  />
+                  <span>{{ addOn.name }} (+AED {{ addOn.price }})</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="meta-section">
+              <button class="btn btn-khf" type="button" (click)="addToCart()" [disabled]="!selectedVariantId">Add to Cart</button>
+              <div *ngIf="successMessage" class="success-msg mt-2">{{ successMessage }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <ng-template #notFound>
+    <div class="container">
+      <div class="alert alert-warning">Product not found.</div>
+    </div>
+  </ng-template>
+</section>

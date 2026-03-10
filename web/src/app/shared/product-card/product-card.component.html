@@ -1,0 +1,8 @@
+<article class="product-card card h-100 border-0 shadow-sm" aria-label="Featured product card">
+  <img [src]="product.imageUrl" class="card-img-top product-image" [alt]="product.title" loading="lazy" />
+  <div class="card-body d-flex flex-column">
+    <h3 class="product-title">{{ product.title }}</h3>
+    <p class="price-text">from AED {{ product.priceFrom }}</p>
+    <a [routerLink]="['/product', product.slug]" class="btn btn-khf mt-auto" aria-label="View product details">View</a>
+  </div>
+</article>

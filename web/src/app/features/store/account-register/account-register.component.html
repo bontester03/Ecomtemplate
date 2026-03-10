@@ -1,30 +1,42 @@
-<mat-card class="account-card">
-  <h1>Create Account</h1>
-  <p class="muted">Save your details for quicker future orders.</p>
+<section class="auth-page py-5">
+  <div class="container">
+    <div class="auth-wrap">
+      <aside class="auth-brand">
+        <img src="assets/images/hero-floral.svg" alt="Khan Home Floral Line" />
+        <h2>Create Your Account</h2>
+        <p>Save multiple addresses and place orders faster with one-click checkout details.</p>
+      </aside>
 
-  <mat-form-field>
-    <mat-label>Full Name</mat-label>
-    <input matInput [(ngModel)]="fullName" autocomplete="name" />
-  </mat-form-field>
+      <mat-card class="account-card">
+        <h1>Create Account</h1>
+        <p class="muted">Join and manage your orders in one place.</p>
 
-  <mat-form-field>
-    <mat-label>Email</mat-label>
-    <input matInput [(ngModel)]="email" type="email" autocomplete="email" />
-  </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Full Name</mat-label>
+          <input matInput [(ngModel)]="fullName" autocomplete="name" />
+        </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Phone</mat-label>
-    <input matInput [(ngModel)]="phone" autocomplete="tel" />
-  </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput [(ngModel)]="email" type="email" autocomplete="email" />
+        </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Password</mat-label>
-    <input matInput [(ngModel)]="password" type="password" autocomplete="new-password" />
-  </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Phone</mat-label>
+          <input matInput [(ngModel)]="phone" autocomplete="tel" />
+        </mat-form-field>
 
-  <p *ngIf="error" class="error">{{ error }}</p>
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput [(ngModel)]="password" type="password" autocomplete="new-password" />
+        </mat-form-field>
 
-  <button mat-raised-button color="primary" (click)="submit()">Create Account</button>
+        <p *ngIf="error" class="error">{{ error }}</p>
 
-  <p class="muted">Already registered? <a routerLink="/account/login">Sign in</a></p>
-</mat-card>
+        <button mat-raised-button color="primary" class="action-btn" (click)="submit()">Create Account</button>
+
+        <p class="muted foot-note">Already registered? <a routerLink="/account/login">Sign in</a></p>
+      </mat-card>
+    </div>
+  </div>
+</section>

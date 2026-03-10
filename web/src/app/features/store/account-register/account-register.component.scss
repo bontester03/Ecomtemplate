@@ -1,3 +1,82 @@
-.account-card { max-width: 460px; margin: 2rem auto; display: grid; gap: .8rem; }
-.muted { color: #555; margin: 0; }
-.error { color: #c62828; margin: 0; }
+:host {
+  display: block;
+  background-color: #fbf7fd;
+}
+
+.auth-wrap {
+  border: 1px solid #eadcf4;
+  border-radius: 14px;
+  background: #fff;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.05fr 1.35fr;
+}
+
+.auth-brand {
+  background: linear-gradient(160deg, #4b1f63 0%, #622f7c 100%);
+  color: #fff;
+  padding: 2rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+.auth-brand img {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  padding: 0.25rem;
+}
+
+.auth-brand h2 {
+  margin: 0;
+  font-size: 1.45rem;
+}
+
+.auth-brand p {
+  margin: 0;
+  color: #f3e9f8;
+}
+
+.account-card {
+  box-shadow: none;
+  border-radius: 0;
+  padding: 1.8rem 1.6rem;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.account-card h1 {
+  margin: 0;
+  color: #2f173d;
+}
+
+.muted {
+  color: #6b6470;
+  margin: 0;
+}
+
+.foot-note {
+  margin-top: 0.25rem;
+}
+
+.action-btn {
+  margin-top: 0.2rem;
+}
+
+.error {
+  color: #c62828;
+  margin: 0;
+}
+
+@media (max-width: 991.98px) {
+  .auth-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-brand {
+    padding: 1.25rem;
+  }
+}

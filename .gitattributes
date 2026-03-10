@@ -1,0 +1,3 @@
+# Exclude third-party theme source/assets from GitHub language stats
+web/theme/** linguist-vendored
+web/src/assets/sb-admin-pro/** linguist-vendored

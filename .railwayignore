@@ -1,0 +1,11 @@
+node_modules/
+**/node_modules/
+**/bin/
+**/obj/
+**/.vs/
+**/.vscode/
+**/dist/
+**/tmp/
+*.log
+.git/
+theme/

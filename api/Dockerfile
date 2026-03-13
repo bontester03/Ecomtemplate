@@ -9,6 +9,8 @@ RUN dotnet publish ./api/KhanHomeFloralLine.Api/KhanHomeFloralLine.Api.csproj -c
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
 WORKDIR /app
 COPY --from=build /app/publish .
-ENV ASPNETCORE_URLS=http://+:8080
+ENV ASPNETCORE_ENVIRONMENT=Production
 EXPOSE 8080
-ENTRYPOINT ["dotnet", "KhanHomeFloralLine.Api.dll"]
+CMD ["sh", "-c", "dotnet KhanHomeFloralLine.Api.dll --urls http://+:${PORT:-8080}"]
+
+

@@ -10,7 +10,8 @@ FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
 WORKDIR /app
 COPY --from=build /app/publish .
 ENV ASPNETCORE_ENVIRONMENT=Production
+ENV ASPNETCORE_HTTP_PORTS=8080
 EXPOSE 8080
-CMD ["sh", "-c", "dotnet KhanHomeFloralLine.Api.dll --urls http://+:${PORT:-8080}"]
+ENTRYPOINT ["dotnet", "KhanHomeFloralLine.Api.dll"]
 
 

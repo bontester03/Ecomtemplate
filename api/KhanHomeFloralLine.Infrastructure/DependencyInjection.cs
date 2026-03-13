@@ -17,8 +17,7 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
-        // Railway and other cloud providers use DATABASE_URL
-        var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL") 
+        var connectionString = ConvertDatabaseUrl(Environment.GetEnvironmentVariable("DATABASE_URL"))
             ?? configuration.GetConnectionString("DefaultConnection")
             ?? throw new InvalidOperationException("Database connection string not found");
         
@@ -49,6 +48,19 @@ public static class DependencyInjection
         services.AddScoped<CatalogDataSeeder>();
 
         return services;
+    }
+
+    private static string? ConvertDatabaseUrl(string? databaseUrl)
+    {
+        if (string.IsNullOrEmpty(databaseUrl)) return null;
+
+        // Already in Npgsql format (has Host=)
+        if (databaseUrl.Contains("Host=", StringComparison.OrdinalIgnoreCase)) return databaseUrl;
+
+        // Convert postgresql://user:pass@host:port/db to Npgsql format
+        var uri = new Uri(databaseUrl);
+        var userInfo = uri.UserInfo.Split(':');
+        return $"Host={uri.Host};Port={uri.Port};Database={uri.AbsolutePath.TrimStart('/')};Username={userInfo[0]};Password={userInfo[1]};SSL Mode=Prefer;Trust Server Certificate=true";
     }
 }
 

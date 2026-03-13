@@ -9,5 +9,6 @@ RUN find /app/dist -type f -name '*.js' -exec sed -i "s|__API_BASE_URL__|${API_U
 
 FROM nginx:1.27-alpine AS final
 COPY --from=build /app/dist/web/browser /usr/share/nginx/html
-COPY --from=build /app/nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build /app/nginx.conf /etc/nginx/templates/default.conf.template
+ENV PORT=80
 EXPOSE 80

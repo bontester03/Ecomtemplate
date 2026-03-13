@@ -122,7 +122,7 @@ app.UseStaticFiles(new StaticFileOptions
     }
 });
 
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
@@ -131,7 +131,20 @@ if (app.Environment.IsDevelopment())
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    db.Database.Migrate();
+    var retries = 5;
+    for (var i = 0; i < retries; i++)
+    {
+        try
+        {
+            db.Database.Migrate();
+            break;
+        }
+        catch (Exception ex) when (i < retries - 1)
+        {
+            Log.Warning(ex, "Database connection attempt {Attempt}/{Retries} failed. Retrying in 5s...", i + 1, retries);
+            await Task.Delay(5000);
+        }
+    }
     await IdentitySchemaBootstrapper.EnsureAsync(db);
 
     var identitySeeder = scope.ServiceProvider.GetRequiredService<IdentityDataSeeder>();

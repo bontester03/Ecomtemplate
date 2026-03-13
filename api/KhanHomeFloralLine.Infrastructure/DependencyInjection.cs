@@ -17,8 +17,13 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
+        // Railway and other cloud providers use DATABASE_URL
+        var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL") 
+            ?? configuration.GetConnectionString("DefaultConnection")
+            ?? throw new InvalidOperationException("Database connection string not found");
+        
         services.AddDbContext<AppDbContext>(opt =>
-            opt.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
+            opt.UseNpgsql(connectionString));
 
         services.AddIdentityCore<User>(options =>
             {
